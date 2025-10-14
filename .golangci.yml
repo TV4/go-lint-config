@@ -45,6 +45,7 @@ formatters:
       # Target maximum line length.
       # Default: 100
       max-len: 120
+      reformat-tags: false # we use tagalign for this
 
 linters:
   enable:
