@@ -457,3 +457,6 @@ linters:
           - wrapcheck
           - exhaustruct
           - gochecknoglobals
+      - path: "flags.go"
+        linters:
+          - gochecknoglobals
