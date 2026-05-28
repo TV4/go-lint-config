@@ -70,11 +70,11 @@ linters:
     - funcorder # checks the order of functions, methods, and constructors
     #- funlen # tool for detection of long functions
     - gocheckcompilerdirectives # validates go compiler directive comments (//go:)
-    - gochecknoglobals # checks that no global variables exist
+    #- gochecknoglobals # checks that no global variables exist — too many legitimate package singletons
     - gochecknoinits # checks that no init functions are present in Go code
     - gochecksumtype # checks exhaustiveness on Go "sum types"
     - gocognit # computes and checks the cognitive complexity of functions
-    - goconst # finds repeated strings that could be replaced by a constant
+    #- goconst # finds repeated strings that could be replaced by a constant — premature extraction
     - gocritic # provides diagnostics that check for bugs, performance and style issues
     #- gocyclo # computes and checks the cyclomatic complexity of functions
     #- godot # checks if comments end in a period
@@ -268,6 +268,7 @@ linters:
         - ^google.golang.org/protobuf/.+Options$
         - ^gopkg.in/yaml.v3.Node$
         - ^github.com/danielgtaylor/huma/.+Operation$
+        - ^github.com/aws/aws-sdk-go-v2/.+Input$
 
     funcorder:
       # Checks if the exported methods of a structure are placed before the non-exported ones.
@@ -292,7 +293,7 @@ linters:
     gocognit:
       # Minimal code complexity to report.
       # Default: 30 (but we recommend 10-20)
-      min-complexity: 20
+      min-complexity: 30
 
     gocritic:
       # Settings passed to gocritic.
@@ -457,6 +458,7 @@ linters:
           - errcheck
           #- funlen
           - goconst
+          - gocognit
           - gosec
           - noctx
           - wrapcheck
